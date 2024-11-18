@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>secondDialog</class>
+ <widget class="QDialog" name="secondDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>690</width>
+    <height>435</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Clever Clean Registration System</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/OIP-removebg-preview (2).png</normaloff>:/images/OIP-removebg-preview (2).png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#secondDialog{
+
+border-image: url(:/images/backregestr.png);}</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>20</y>
+     <width>281</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid #8f8f91;  /* Border color */
+    border-radius: 50px;        /* Rounded corners */
+    background-color: #38b6ff;  /* Background color */
+    margin-top: 12px;           /* Space between title and border */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;  /* Positioning of the title */
+    subcontrol-position: top left;  /* Align title to top-left */
+    padding: 0 3px;             /* Padding around the title */
+    background-color: #007BFF;  /* Title background color */
+    color: white;               /* Title text color */
+    border-radius: 5px;         /* Rounded title corners */
+}
+</string>
+   </property>
+   <property name="title">
+    <string>Create An Account </string>
+   </property>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>241</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;span style=&quot;font-family:'Garet'; color:#17224d;&quot;&gt;Username:&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="usernameregistr">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+    border: 1px solid #8f8f91; /* Default border color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px; /* Inner padding */
+    background-color: white; /* Background color */
+    font-family: &quot;Garet&quot;; /* Font */
+    font-size: 12pt; /* Font size */
+    color: #17224d; /* Text color */
+}
+QLineEdit:focus {
+    border: 2px solid #17224d; /* Change border color on focus */
+    background-color: #f0f0f0; /* Optional: change background on focus */
+}
+QLineEdit::placeholder {
+    color: #c0c0c0; /* Placeholder color */
+    font-family: &quot;Garet&quot;; /* Ensure Garet is installed */
+    font-size: 12pt; /* Set font size */
+}
+</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;span style=&quot;font-family:'Garet'; color:#17224d;&quot;&gt;Email Adress:&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="emailreg">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+    border: 1px solid #8f8f91; /* Default border color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px; /* Inner padding */
+    background-color: white; /* Background color */
+    font-family: &quot;Garet&quot;; /* Font */
+    font-size: 12pt; /* Font size */
+    color: #17224d; /* Text color */
+}
+QLineEdit:focus {
+    border: 2px solid #17224d; /* Change border color on focus */
+    background-color: #f0f0f0; /* Optional: change background on focus */
+}
+QLineEdit::placeholder {
+    color: #c0c0c0; /* Placeholder color */
+    font-family: &quot;Garet&quot;; /* Ensure Garet is installed */
+    font-size: 12pt; /* Set font size */
+}
+</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;span style=&quot;font-family:'Garet'; color:#17224d;&quot;&gt;Password:&lt;/span&gt;
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="passwordreg">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+    border: 1px solid #8f8f91; /* Default border color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px; /* Inner padding */
+    background-color: white; /* Background color */
+    font-family: &quot;Garet&quot;; /* Font */
+    font-size: 12pt; /* Font size */
+    color: #17224d; /* Text color */
+}
+QLineEdit:focus {
+    border: 2px solid #17224d; /* Change border color on focus */
+    background-color: #f0f0f0; /* Optional: change background on focus */
+}
+QLineEdit::placeholder {
+    color: #c0c0c0; /* Placeholder color */
+    font-family: &quot;Garet&quot;; /* Ensure Garet is installed */
+    font-size: 12pt; /* Set font size */
+}
+</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>350</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    font-family: 'Garet';            /* Set the font to Garet */
+    font-size: 18pt;               /* Set the font size to 24.1 pt */
+    font-weight: bold;               /* Make the text bold */
+    color: #17224d;                  /* Set the text color to #17224d */
+    background-color: white;         /* Default background color */
+    border-radius: 15px;             /* Rounded corners */
+    border: 2px solid #17224d;       /* Border color */
+}
+
+QPushButton:pressed {
+    background-color: #38b6ff;       /* Background color when pressed */
+    color: white;                    /* Text color when pressed */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Submit</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
