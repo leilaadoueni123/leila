@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>992</width>
+    <height>721</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Login And Register system</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/OIP-removebg-preview (2).png</normaloff>:/images/OIP-removebg-preview (2).png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#centralwidget{
+border-image: url(:/images/logbCK.png)
+
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>120</y>
+      <width>361</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+    border: 1px solid #8f8f91;  /* Border color */
+    border-radius: 50px;        /* Rounded corners */
+    background-color: #38b6ff;  /* Background color */
+    margin-top: 12px;           /* Space between title and border */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;  /* Positioning of the title */
+    subcontrol-position: top left;  /* Align title to top-left */
+    padding: 0 3px;             /* Padding around the title */
+    background-color: #007BFF;  /* Title background color */
+    color: white;               /* Title text color */
+    border-radius: 5px;         /* Rounded title corners */
+}
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>361</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+    &lt;div align=&quot;center&quot;&gt;
+        &lt;span style=&quot;font-size:28pt; font-weight: bold; color: #17224d;&quot;&gt;Login To Your&lt;/span&gt;&lt;br style=&quot;line-height: 0; margin-bottom: -5px;&quot;&gt;
+        &lt;span style=&quot;font-size:28pt; font-weight: bold; color: #17224d;&quot;&gt;Account&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</string>
+     </property>
+     <property name="indent">
+      <number>-1</number>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="idlogin">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>210</y>
+       <width>279</width>
+       <height>44</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border: 1px solid #8f8f91; /* Default border color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px; /* Inner padding */
+    background-color: white; /* Background color */
+    font-family: &quot;Garet&quot;; /* Font */
+    font-size: 12pt; /* Font size */
+    color: #17224d; /* Text color */
+}
+QLineEdit:focus {
+    border: 2px solid #17224d; /* Change border color on focus */
+    background-color: #f0f0f0; /* Optional: change background on focus */
+}
+QLineEdit::placeholder {
+    color: #c0c0c0; /* Placeholder color */
+    font-family: &quot;Garet&quot;; /* Ensure Garet is installed */
+    font-size: 12pt; /* Set font size */
+}
+</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="username">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>165</y>
+       <width>279</width>
+       <height>38</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Garet'; color:#17224d;&quot;&gt;Identfient:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="passwordlogin">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>300</y>
+       <width>279</width>
+       <height>44</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+     border: 1px solid #8f8f91; /* Default border color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px; /* Inner padding */
+    background-color: white; /* Background color */
+    font-family: &quot;Garet&quot;; /* Font */
+    font-size: 14pt; /* Font size */
+    color: #17224d; /* Text color */
+}
+QLineEdit:focus {
+    border: 2px solid #17224d; /* Change border color on focus */
+    background-color: #f0f0f0; /* Optional: change background on focus */
+}
+QLineEdit::placeholder {
+    color: #c0c0c0; /* Placeholder color */
+    font-family: &quot;Garet&quot;; /* Ensure Garet is installed */
+    font-size: 12pt; /* Set font size */
+}
+</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="username_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>260</y>
+       <width>279</width>
+       <height>38</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Garet'; color:#17224d;&quot;&gt;Mot de passe:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="login">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>550</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    font-family: 'Garet';            /* Set the font to Garet */
+    font-size: 20pt;               /* Set the font size to 24.1 pt */
+    font-weight: bold;               /* Make the text bold */
+    color: #17224d;                  /* Set the text color to #17224d */
+    background-color: white;         /* Default background color */
+    border-radius: 15px;             /* Rounded corners */
+    border: 2px solid #17224d;       /* Border color */
+}
+
+QPushButton:pressed {
+    background-color: #38b6ff;       /* Background color when pressed */
+    color: white;                    /* Text color when pressed */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>540</y>
+      <width>291</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #f4fafb;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>&lt;p style=&quot;margin: 0; line-height: 1;&quot;&gt;&lt;b&gt;Don’t you have an account?&lt;/b&gt;&lt;/p&gt;
+&lt;p style=&quot;margin: 0; line-height: 1;&quot;&gt;
+    &lt;b&gt;&lt;a href=&quot;#signup&quot; style=&quot;color: #f4fafb; text-decoration: underline;&quot;&gt;Sign up now&lt;/a&gt;&lt;/b&gt;
+&lt;/p&gt;
+</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

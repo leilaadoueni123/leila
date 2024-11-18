@@ -1,0 +1,12 @@
+debug/client.o
+debug/connection.o
+debug/dialogdashboard.o
+debug/employee.o
+debug/main.o
+debug/mainwindow.o
+debug/seconddialog.o
+debug/qrc_resources.o
+debug/moc_client.o
+debug/moc_dialogdashboard.o
+debug/moc_mainwindow.o
+debug/moc_seconddialog.o
