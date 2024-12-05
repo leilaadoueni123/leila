@@ -6,6 +6,7 @@
 #include<dialogdashboard.h>
 #include "employee.h"
 #include "client.h"
+#include "arduino.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,6 +28,8 @@ private slots:
 
 
     void on_login_clicked();
+    void update_label();
+
 
 private:
     Ui::MainWindow *ui;
@@ -34,5 +37,7 @@ private:
     Dialogdashboard *ddb;
     client *c;
     employee etmp;
+    QByteArray data;
+    Arduino A;
 };
 #endif // MAINWINDOW_H

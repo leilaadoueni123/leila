@@ -2,7 +2,7 @@
 #include <utility> // Inclure pour std::move
 #include <QMessageBox>
 #include <qDebug>
-employee::employee(QString nom,QString prenom,QString poste,int id ,float salaire)
+employee::employee(QString nom,QString prenom,QString poste,QString id ,float salaire)
 {
     this->id=id;
     this->nom=nom;
@@ -15,15 +15,11 @@ employee::employee(QString nom,QString prenom,QString poste,int id ,float salair
 bool employee::ajouter()
 {
     // Contrôle de saisie
-        if (nom.isEmpty() || prenom.isEmpty() || poste.isEmpty()) {
-            QMessageBox::warning(nullptr, "Erreur", "Les champs Nom, Prénom et Poste doivent être remplis.");
+        if (nom.isEmpty() || prenom.isEmpty() || poste.isEmpty()|| id.isEmpty()) {
+            QMessageBox::warning(nullptr, "Erreur", "Les champs ID, Nom, Prénom et Poste doivent être remplis.");
             return false;
         }
 
-        if (id <= 0) {
-            QMessageBox::warning(nullptr, "Erreur", "L'ID doit être un entier positif.");
-            return false;
-        }
 
         if (salaire < 0) {
             QMessageBox::warning(nullptr, "Erreur", "Le salaire ne peut pas être négatif.");
@@ -31,10 +27,8 @@ bool employee::ajouter()
         }
 
     QSqlQuery query;
-    QString res = QString::number(id);
-
     query.prepare("insert into employee(NOM,PRENOM,POSTE,ID,SALAIRE)" "values(:nom,:prenom,:poste,:id,:salaire)");
-    query.bindValue(":id",res);
+    query.bindValue(":id",id);
     query.bindValue(":nom",nom);
     query.bindValue(":prenom",prenom);
     query.bindValue(":poste",poste);
@@ -48,12 +42,13 @@ bool employee::ajouter()
 QSqlQueryModel * employee::afficher(){
 
     QSqlQueryModel*model=new QSqlQueryModel();
-    model->setQuery("select * from employee");
+    model->setQuery("select NOM,PRENOM,POSTE,ID,SALAIRE,DATE_E from employee");
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("PRENOM"));
     model->setHeaderData(3,Qt::Horizontal,QObject::tr("POSTE"));
     model->setHeaderData(4,Qt::Horizontal,QObject::tr("SALAIRE"));
+    model->setHeaderData(5,Qt::Horizontal,QObject::tr("DATE ENTREE"));
   return model;
 }
 QSqlQueryModel* employee::afficher(QSqlQuery& query)
@@ -65,20 +60,20 @@ QSqlQueryModel* employee::afficher(QSqlQuery& query)
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRENOM"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("POSTE"));
     model->setHeaderData(4, Qt::Horizontal, QObject::tr("SALAIRE"));
+    model->setHeaderData(6,Qt::Horizontal,QObject::tr("DATE ENTREE"));
     return model;
 }
 
 
 
 
-bool employee::supprimer(int id)
+bool employee::supprimer(QString id)
 {
 
     QSqlQuery query;
-    QString res=QString::number(id);
 
     query.prepare("delete from employee where ID= :id");
-    query.bindValue(":id",res);
+    query.bindValue(":id",id);
 
     return query.exec();
 }
@@ -95,7 +90,7 @@ bool employee::modifier() {
 
     return query.exec(); // Retourner le résultat de l'exécution de la requête
 }
-bool employee::doesIDExist(int idd) {
+bool employee::doesIDExist(QString idd) {
     QSqlQuery query;
     query.prepare("SELECT COUNT(*) FROM employee WHERE id = :id");
     query.bindValue(":id", idd);
@@ -112,7 +107,7 @@ bool employee::doesIDExist(int idd) {
     return false;
 }
 
-bool employee::isPasswordCorrect(int idd, const QString& password) {
+bool employee::isPasswordCorrect(QString idd, const QString& password) {
     QSqlQuery query;
     query.prepare("SELECT password FROM employee WHERE id =:id");
     query.bindValue(":id", idd);
@@ -128,7 +123,7 @@ bool employee::isPasswordCorrect(int idd, const QString& password) {
 
     return false;
 }
-QString employee::getRole(int idd) {
+QString employee::getRole(QString idd) {
 
     QSqlQuery query;
     query.prepare("SELECT poste FROM employee WHERE id = :id");

@@ -40,7 +40,7 @@ Dialogdashboard::~Dialogdashboard()
 
 void Dialogdashboard::on_pushButton_3_clicked()
 {
-    int id=ui->lineEdit_2->text().toInt();
+    QString id=ui->lineEdit_2->text();
     QString nom=ui->lineEdit->text();
     QString prenom=ui->lineEdit_4->text();
     QString poste=ui->lineEdit_5->text();
@@ -61,7 +61,7 @@ void Dialogdashboard::on_pushButton_3_clicked()
 
 void Dialogdashboard::on_pushButton_6_clicked()//supprimer
 {
-    int id=ui->lineEdit_11->text().toInt();
+    QString id=ui->lineEdit_11->text();
    bool test=etmp.supprimer(id);
 
         if (test) {
@@ -77,7 +77,7 @@ void Dialogdashboard::on_pushButton_6_clicked()//supprimer
 
 void Dialogdashboard::on_pushButton_5_clicked()
 {
-    int id=ui->lineEdit_8->text().toInt();
+    QString id=ui->lineEdit_8->text();
     QString nom=ui->lineEdit_6->text();
     QString prenom=ui->lineEdit_7->text();
     QString poste=ui->lineEdit_9->text();
@@ -102,10 +102,10 @@ void Dialogdashboard::on_pushButton_7_clicked()
 
 void Dialogdashboard::on_pushButton_8_clicked()//pdf
 {
-    int employeeId = ui->lineEdit_14->text().toInt(); // Champ pour l'ID de l'employé
+    QString employeeId = ui->lineEdit_14->text(); // Champ pour l'ID de l'employé
     generatePdf(employeeId); // Appel de la fonction pour générer le PDF
 }
-void Dialogdashboard::generatePdf(int employeeId)
+void Dialogdashboard::generatePdf(QString employeeId)
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Payslip"), "", tr("PDF Files (*.pdf);;All Files (*)"));
 
@@ -115,7 +115,7 @@ void Dialogdashboard::generatePdf(int employeeId)
 
     QPdfWriter pdfWriter(fileName);
     pdfWriter.setPageSize(QPageSize(QPageSize::A4));
-    pdfWriter.setResolution(300);
+    pdfWriter.setResolution(400);
 
     QPainter painter(&pdfWriter);
     QFont font("Arial", 12);
@@ -133,22 +133,24 @@ void Dialogdashboard::generatePdf(int employeeId)
 
     // Dessiner le contenu de la fiche de paie
     painter.drawText(100, 30, "Fiche de Paie");
-    painter.drawText(100, 80, "Nom: " + query.value("NOM").toString());
-    painter.drawText(100, 120, "Prénom: " + query.value("PRENOM").toString());
-    painter.drawText(100, 160, "Poste: " + query.value("POSTE").toString());
-    painter.drawText(100, 200, "ID: " + QString::number(employeeId));
-    // Séparation visuelle
-    painter.drawLine(250, 250, 400, 280); // Ligne de séparation
+    painter.drawText(100, 480, "Nom: " + query.value("NOM").toString());      // y = 30 + 450
+    painter.drawText(100, 930, "Prénom: " + query.value("PRENOM").toString()); // y = 480 + 450
+    painter.drawText(100, 1380, "Poste: " + query.value("POSTE").toString());  // y = 930 + 450
+    painter.drawText(100, 1830, "ID: " + QString(employeeId));         // y = 1380 + 450
 
+    // Séparation visuelle
+    painter.drawLine(250, 1930, 400, 1930); // Ligne sous la dernière ligne de texte (ID)
 
     // Détails de la rémunération
     double salary = query.value("SALAIRE").toDouble();
     double deductions = salary * 0.1;  // Exemple de déduction de 10%
     double netPay = salary - deductions;
 
-    painter.drawText(100, 450, "Salaire Brut: " + QString::number(salary, 'f', 2));
-    painter.drawText(100, 450, "Deductions: " + QString::number(deductions, 'f', 2));
-    painter.drawText(100, 400, "Net à Payer: " + QString::number(netPay, 'f', 2));
+    // Les coordonnées des détails de la rémunération sont ajustées
+    painter.drawText(100, 2380, "Salaire Brut: " + QString::number(salary, 'f', 2));    // y = 1930 + 450
+    painter.drawText(100, 2830, "Deductions: " + QString::number(deductions, 'f', 2));  // y = 2380 + 450
+    painter.drawText(100, 3280, "Net à Payer: " + QString::number(netPay, 'f', 2));     // y = 2830 + 450
+
 
     painter.end();
     QMessageBox::information(this, tr("PDF Generated"), tr("The payslip has been saved as a PDF."));
@@ -156,11 +158,11 @@ void Dialogdashboard::generatePdf(int employeeId)
 
 void Dialogdashboard::on_pushButton_9_clicked()//recherche
 {
-    int id = ui->lineEdit_12->text().toInt();
+    QString id = ui->lineEdit_12->text();
         QString nom = ui->lineEdit_13->text();
 
         QSqlQuery query;
-        if (id > 0) {
+        if (!id.isEmpty()) {
             query.prepare("SELECT * FROM EMPLOYEE WHERE ID = :id");
             query.bindValue(":id", id);
         } else if (!nom.isEmpty()) {
@@ -188,7 +190,7 @@ void Dialogdashboard::on_pushButton_9_clicked()//recherche
 
 void Dialogdashboard::on_pushButton_10_clicked()//tri
 {
-    QString criterion = ui->comboBox->currentText(); // Supposons que comboBox_tri contient "Poste" et "Salaire"
+    QString criterion = ui->comboBox->currentText();
        QSqlQuery query;
 
        if (criterion == "Poste") {
@@ -206,7 +208,7 @@ void Dialogdashboard::on_pushButton_10_clicked()//tri
        }
 
        // Mettez à jour votre tableView avec les résultats triés
-       ui->tableView->setModel(etmp.afficher(query)); // Assurez-vous que la méthode 'afficher' peut accepter une requête
+       ui->tableView->setModel(etmp.afficher(query));
 }
 
 void Dialogdashboard::calculateSalaryStatistics()

@@ -12,6 +12,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+        switch(ret){
+        case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+            break;
+        case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+           break;
+        case(-1):qDebug() << "arduino is not available";
+        }
+         QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
 
     ui->idlogin->setPlaceholderText("Please Enter your Email Adress");
     ui->passwordlogin->setPlaceholderText("Please Enter Your Password");
@@ -56,12 +65,11 @@ void MainWindow::on_login_clicked()
 
     {
         // Récupération de l'ID et du mot de passe depuis les champs de texte
-        int idd = ui->idlogin->text().toInt();
+        QString idd = ui->idlogin->text();
         QString password = ui->passwordlogin->text();
 
         employee e;
 
-        // Vérification si l'ID et le mot de passe sont valides
         if (e.doesIDExist(idd) && e.isPasswordCorrect(idd, password)) {
             // Vérification du poste (rôle) de l'utilisateur
             QString role = e.getRole(idd);  // Supposons que getRole retourne le rôle de l'utilisateur (par ex. "employé" ou "client")
@@ -89,8 +97,33 @@ void MainWindow::on_login_clicked()
         }
 
 
+}
 
 
+void MainWindow::update_label()
+{
+    // Lire les données d'Arduino
+    QByteArray data = A.read_from_arduino();
+    QString receivedData = QString::fromUtf8(data).trimmed(); // Supprimer les espaces, \r, \n
+    if (!receivedData.isEmpty()) {
+        QSqlQuery query;
+        query.prepare("SELECT COUNT(*) FROM employee WHERE ID = :ID");
+        query.bindValue(":ID", receivedData);
 
+        if (query.exec() && query.next()) {
+            int count = query.value(0).toInt();
+            if (count > 0) {
+                A.write_to_arduino("4");
+                query.prepare("UPDATE employee SET DATE_E = CURRENT_TIMESTAMP WHERE ID = :ID");
+                query.bindValue(":ID", receivedData);
+                query.exec();
+                ddb = new Dialogdashboard(this);
+                ddb->show();
+            }
+            else {
+                A.write_to_arduino("3");
+            }
+        }
+    }
 }
 

@@ -6,18 +6,18 @@
 class employee
 {
     QString nom,prenom,poste;
-    int id;
+    QString id;
     float salaire;
 
 public:
     employee(){}
-    employee(QString, QString, QString, int, float salaire);
+    employee(QString, QString, QString, QString, float salaire);
 
     //getters
     QString getnom(){return nom;}
     QString getprenom(){return prenom;}
     QString getposte(){return poste;}
-    int getID(){return id;}
+    QString getID(){return id;}
     float getsalaire(){return salaire;}
 
 
@@ -26,7 +26,7 @@ public:
          void setnom(QString n ){nom=n;}
          void setprenom(QString pr){prenom= pr;}
          void setposte(QString p ){poste= p;}
-         void setID(int id){this->id=id;}
+         void setID(QString id){this->id=id;}
          void setsalaire(float s){salaire=s;}
 
 
@@ -35,12 +35,12 @@ public:
          bool ajouter();
          QSqlQueryModel*afficher();
          QSqlQueryModel*afficher(QSqlQuery& query);
-         bool supprimer(int);
+         bool supprimer(QString);
          bool modifier();
 
-         bool doesIDExist(int idd);
-         bool isPasswordCorrect(int idd, const QString& password);
-         QString getRole(int idd);
+         bool doesIDExist(QString idd);
+         bool isPasswordCorrect(QString idd, const QString& password);
+         QString getRole(QString idd);
 
   };
 

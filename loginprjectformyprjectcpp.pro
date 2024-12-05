@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql serialport
 QT       += widgets printsupport
 QT += core gui network sql printsupport
 QT += charts
@@ -11,6 +11,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     client.cpp \
     connection.cpp \
     dialogdashboard.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     seconddialog.cpp
 
 HEADERS += \
+    arduino.h \
     client.h \
     connection.h \
     dialogdashboard.h \
